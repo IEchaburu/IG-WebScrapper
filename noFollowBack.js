@@ -5,7 +5,12 @@ async function noFollowBack() {
     // THIS FUNCTION IS IN CHARGE OF FETCHING ALL THE FOLLOWERS
     async function loadAllFollowers() {
         // VARIABLE TO BE UPDATED REGULARLY, IT'S MODAL CONTAINING THE FOLLOWERS
-        let followersCtr = document.querySelector("body > div.x1n2onr6.xzkaem6 > div.x9f619.x1n2onr6.x1ja2u2z > div > div.x1uvtmcs.x4k7w5x.x1h91t0o.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1n2onr6.x1qrby5j.x1jfb8zj > div > div > div > div > div > div > div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+        let followersCtr = document.querySelector("body > div.x1n2onr6.xzkaem6 > div:nth-child(2) > div > div > div.x9f619.x1n2onr6.x1ja2u2z > div > div.x1uvtmcs.x4k7w5x.x1h91t0o.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1n2onr6.x1qrby5j.x1jfb8zj > div > div > div")
+
+        if (!followersCtr) {
+            console.error("No se pudo encontrar el contenedor de seguidores.");
+            return;
+        }
 
         const scrollToEnd = () => {
             followersCtr.scrollTop = followersCtr.scrollHeight;
@@ -13,8 +18,15 @@ async function noFollowBack() {
 
         // VARIABLE RESPONSIBLE FOR GETTING THE AMOUNT OF FOLLOWERS
         let followersNumber = document.querySelectorAll("span");
-        let amountOfFollowers = followersNumber[4].innerHTML;
+        let amountOfFollowers = followersNumber[6].innerHTML;
+        
+        if (isNaN(amountOfFollowers)) {
+            console.error("No se pudo obtener la cantidad de seguidores.");
+            return;
+        }
+
         let followersObtained = 0;
+
 
         let myFollowers = '';
 
@@ -35,7 +47,7 @@ async function noFollowBack() {
         }
 
         followers = myFollowers;
-        console.log("Todos los seguidores se han cargado.");
+        
         console.log("Todos los seguidores se han cargado.", followers);
 
     }
@@ -45,6 +57,11 @@ async function noFollowBack() {
 
     // FOLLOWING BUTTON, TO BE UPDATED REGULARLY
     let followingButton = document.querySelector("body > div.x1n2onr6.xzkaem6 > div.x9f619.x1n2onr6.x1ja2u2z > div > div.x1uvtmcs.x4k7w5x.x1h91t0o.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1n2onr6.x1qrby5j.x1jfb8zj > div > div > div > div > div > div > div.x6s0dn4.xrvj5dj.x1lp0lgv.xh8yej3 > div:nth-child(2) > span > span > span")
+
+    if (!followingButton) {
+        console.error("No se pudo encontrar el botón para abrir el modal de seguidos.");
+        return;
+    };
 
     followingButton.click()
 
@@ -59,7 +76,12 @@ async function noFollowBack() {
     async function loadAllFollows() {
         // VARIABLE TO BE UPDATED REGULARLY, IT'S MODAL CONTAINING THE FOLLOWS,
         // IT'S THE SAME AS FOLLOWERS
-        let followersCtr = document.querySelector("body > div.x1n2onr6.xzkaem6 > div.x9f619.x1n2onr6.x1ja2u2z > div > div.x1uvtmcs.x4k7w5x.x1h91t0o.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1n2onr6.x1qrby5j.x1jfb8zj > div > div > div > div > div > div > div.x9f619.xjbqb8w.x78zum5.x168nmei.x13lgxp2.x5pf9jr.xo71vjh.x1sxyh0.xurb0ha.x1uhb9sk.x6ikm8r.x1rife3k.x1iyjqo2.x2lwn1j.xeuugli.xdt5ytf.xqjyukv.x1qjc9v5.x1oa3qoh.x1nhvcw1.x1l90r2v")
+        let followersCtr = document.querySelector("body > div.x1n2onr6.xzkaem6 > div:nth-child(2) > div > div > div.x9f619.x1n2onr6.x1ja2u2z > div > div.x1uvtmcs.x4k7w5x.x1h91t0o.x1beo9mf.xaigb6o.x12ejxvf.x3igimt.xarpa2k.xedcshv.x1lytzrv.x1t2pt76.x7ja8zs.x1n2onr6.x1qrby5j.x1jfb8zj > div > div > div")
+
+        if (!followersCtr) {
+            console.error("No se pudo encontrar el contenedor de seguidos.");
+            return;
+        }
 
         const scrollToEnd = () => {
             followersCtr.scrollTop = followersCtr.scrollHeight;
@@ -68,7 +90,14 @@ async function noFollowBack() {
         // VARIABLE RESPONSIBLE FOR GETTING THE AMOUNT OF FOLLOWS
         let followsNumber = document.querySelectorAll("span");
         let amountOfFollows = followsNumber[6].innerHTML;
+        
+        if (isNaN(amountOfFollows)) {
+            console.error("No se pudo obtener la cantidad de seguidos.");
+            return;
+        }
+
         let followsObtained = 0;
+
 
         let myFollows = '';
 
@@ -89,7 +118,7 @@ async function noFollowBack() {
         }
 
         following = myFollows;
-        console.log("Todos los seguidos se han cargado.");
+        
         console.log("Todos los seguidos se han cargado.", following);
 
     }
